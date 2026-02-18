@@ -1,0 +1,100 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // ============================================================
+    // 4.1 Equivalencia Puntero-Arreglo
+    // ============================================================
+    cout << "=== 4.1 Equivalencia Puntero-Arreglo ===" << endl;
+
+    int a[10];
+    for (int i = 0; i < 10; i++) a[i] = i * 10;
+
+    int *p = a;
+
+    cout << "a[7]    = " << a[7]   << endl;
+    cout << "*(a+7)  = " << *(a+7) << endl;
+    cout << "*(p+7)  = " << *(p+7) << endl;
+
+    // ============================================================
+    // 4.2 Cuatro Notaciones Equivalentes
+    // ============================================================
+    cout << "\n=== 4.2 Cuatro Notaciones Equivalentes ===" << endl;
+
+    p = a;
+
+    p[7]     = 13; cout << "p[7]=13       -> a[7]=" << a[7] << endl;
+    *(p + 7) = 14; cout << "*(p+7)=14     -> a[7]=" << a[7] << endl;
+    *(7 + p) = 15; cout << "*(7+p)=15     -> a[7]=" << a[7] << endl;
+    7[p]     = 13; cout << "7[p]=13       -> a[7]=" << a[7] << endl;
+
+    // ============================================================
+    // 4.3 Indices Negativos
+    // ============================================================
+    cout << "\n=== 4.3 Indices Negativos ===" << endl;
+
+    for (int i = 0; i < 10; i++) a[i] = i * 10;
+
+    p = a + 5;
+    cout << "p = a+5  ->  *p = " << *p << "  (a[5])" << endl;
+
+    p[-2]    = 9;  cout << "p[-2]=9       -> a[3]=" << a[3] << endl;
+    *(p - 2) = 99; cout << "*(p-2)=99     -> a[3]=" << a[3] << endl;
+    *(-2+p)  = 9;  cout << "*(-2+p)=9     -> a[3]=" << a[3] << endl;
+    (-2)[p]  = 77; cout << "(-2)[p]=77    -> a[3]=" << a[3] << endl;
+
+    // ============================================================
+    // 4.4 Esquema de Memoria
+    // ============================================================
+    cout << "\n=== 4.4 Esquema de Memoria ===" << endl;
+
+    for (int i = 0; i < 10; i++) a[i] = i * 10;
+    p = a;
+
+    cout << "Indice | Direccion        | Valor" << endl;
+    cout << "-------|------------------|------" << endl;
+    for (int i = 0; i < 10; i++)
+        cout << "  a[" << i << "] |  " << (p + i) << "  |  " << *(p + i) << endl;
+
+    p = a + 5;
+    cout << "\np = a+5 apunta a a[5]" << endl;
+    cout << "p[-2] = a[3] = " << p[-2] << endl;
+    cout << "p[ 2] = a[7] = " << p[2]  << endl;
+
+    // ============================================================
+    // 4.5 Punteros a Cadenas
+    // ============================================================
+    cout << "\n=== 4.5 Punteros a Cadenas ===" << endl;
+
+    char str[] = "UNXSM";
+    char *pStr = str;
+    char *p2   = pStr + 3;  // apunta a str[3] = 'S'
+
+    cout << "Cadena original : " << pStr << endl;
+    cout << "p2 apunta a     : '" << *p2 << "'  (str[3])" << endl;
+
+    *(p2 - 1) = 'A'; cout << "*(p2-1)='A'   -> " << pStr << endl;
+    p2[-1]    = 'B'; cout << "p2[-1]='B'    -> " << pStr << endl;
+    (-1)[p2]  = 'X'; cout << "(-1)[p2]='X'  -> " << pStr << endl;
+
+    // ============================================================
+    // 4.6 Escalado por sizeof
+    // ============================================================
+    cout << "\n=== 4.6 Escalado por sizeof ===" << endl;
+
+    int    ai[2] = {1, 2};
+    double ad[2] = {1.0, 2.0};
+
+    int    *pi = ai;
+    double *pd = ad;
+
+    cout << "sizeof(int)    = " << sizeof(int)    << " bytes" << endl;
+    cout << "sizeof(double) = " << sizeof(double) << " bytes" << endl;
+
+    cout << "pi+1 avanza " << (long long)(pi+1) - (long long)(pi) << " bytes" << endl;
+    cout << "pd+1 avanza " << (long long)(pd+1) - (long long)(pd) << " bytes" << endl;
+
+    return 0;
+}
+
