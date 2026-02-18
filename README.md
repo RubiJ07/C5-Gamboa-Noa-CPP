@@ -20,6 +20,7 @@ GRUPO 5 INTREGANTES:
 - Ramirez Hilares, Bruno Elias
 - Calderon Garcia, Ismael Francisco
 - Gamboa Noa, Rubi Julissa
+
 COORDINADOR(A):
 - Gamboa Noa, Rubi Julissa
 
